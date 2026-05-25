@@ -100,6 +100,17 @@ string json_to_string(const Json &data, const string &field = "", bool silent = 
     return output;
 }
 
+bool json_to_bool(const Json &data, const string &field, bool defaultValue = false) {
+    const Json value = data[field];
+    if (value.is_null())
+        return defaultValue;
+
+    if (!value.is_bool())
+        FATAL_ERROR("Value for '%s' is unexpected type; expected bool.\n", field.c_str());
+
+    return value.bool_value();
+}
+
 string get_generated_warning(const string &filename, bool isAsm) {
     string comment = isAsm ? "@" : "//";
 
@@ -467,20 +478,25 @@ string generate_groups_text(Json groups_data, vector<string> &invalid_maps) {
     vector<string> valid_groups;
     for (auto &key : groups_data["group_order"].array_items()) {
         string group = json_to_string(key);
-        vector<string> valid_maps;
+        bool hasValidMap = false;
         auto maps = groups_data[group].array_items();
         for (Json &map_name : maps) {
             string map_name_str = json_to_string(map_name);
             auto it = find(invalid_maps.begin(), invalid_maps.end(), map_name_str);
-            if (it == invalid_maps.end()) {
-                valid_maps.push_back(map_name_str);
-            }
+            if (it == invalid_maps.end())
+                hasValidMap = true;
         }
 
-        if (valid_maps.size() > 0) {
+        if (hasValidMap) {
             text << group << "::\n";
-            for (string map : valid_maps)
-                text << "\t.4byte " << map << "\n";
+            for (Json &map_name : maps) {
+                string map_name_str = json_to_string(map_name);
+                auto it = find(invalid_maps.begin(), invalid_maps.end(), map_name_str);
+                if (it == invalid_maps.end())
+                    text << "\t.4byte " << map_name_str << "\n";
+                else
+                    text << "\t.4byte NULL\n";
+            }
             text << "\n";
             valid_groups.push_back(group);
         }
@@ -735,7 +751,9 @@ void process_groups(string groups_filepath, vector<string> &map_filepaths, strin
         }
         string map_name = json_to_string(map_data, "name");
 
-        if ((version == "emerald" && region != "REGION_HOENN")
+        bool includeInEmerald = json_to_bool(map_data, "include_in_emerald");
+
+        if ((version == "emerald" && region != "REGION_HOENN" && !includeInEmerald)
          || (version == "firered" && region != "REGION_KANTO")) {
             invalid_maps.push_back(map_name);
         }
@@ -772,7 +790,8 @@ string generate_layout_headers_text(Json layouts_data) {
         if (layout_version.empty()) {
             layout_version = "emerald";
         }
-        if ((version == "emerald" && layout_version != "emerald")
+        bool includeInEmerald = json_to_bool(layout, "include_in_emerald");
+        if ((version == "emerald" && layout_version != "emerald" && !includeInEmerald)
          || (version == "firered" && layout_version != "frlg"))
             continue;
         string layoutName = json_to_string(layout, "name");
@@ -827,7 +846,9 @@ string generate_layouts_table_text(Json layouts_data) {
         if (layout_version.empty()) {
             layout_version = "emerald";
         }
-        if ((version == "emerald" && layout_version != "emerald") || (version == "firered" && layout_version != "frlg")) {
+        bool includeInEmerald = json_to_bool(layout, "include_in_emerald");
+        if ((version == "emerald" && layout_version != "emerald" && !includeInEmerald)
+         || (version == "firered" && layout_version != "frlg")) {
             text << "\t.4byte NULL\n";
         } else {
             string layout_name = json_to_string(layout, "name", true);

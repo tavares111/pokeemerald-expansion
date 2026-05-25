@@ -39,6 +39,7 @@
   - [How to use the code entry system](tutorials/how_to_code_entry.md)
   - [How to use Follower NPCs](tutorials/how_to_follower_npc.md)
   - [Time-Based Encounters](tutorials/how_to_time_of_day_encounters.md)
+  - [How to import raw FRLG maps into Emerald](tutorials/how_to_import_raw_frlg_maps_to_emerald.md)
   - [How to use Trainer Party Pools](tutorials/how_to_trainer_party_pool.md)
   - [How to Apricorn Tree](tutorials/how_to_apricorn_tree.md)
   - [How to Namebox](tutorials/how_to_namebox.md)

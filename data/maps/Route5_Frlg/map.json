@@ -26,9 +26,7 @@
       "direction": "down"
     }
   ],
-  "object_events": [
-
-  ],
+  "object_events": [],
   "warp_events": [
     {
       "x": 31,
@@ -59,17 +57,8 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-    {
-      "type": "sign",
-      "x": 32,
-      "y": 32,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "Route5_EventScript_UndergroundPathSign"
-    }
-  ]
+  "coord_events": [],
+  "bg_events": [],
+  "shared_scripts_map": "VictoryRoad_B1F",
+  "include_in_emerald": true
 }

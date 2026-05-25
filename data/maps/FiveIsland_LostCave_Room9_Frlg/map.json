@@ -47,5 +47,7 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "shared_scripts_map": "VictoryRoad_B1F",
+  "include_in_emerald": true
 }
