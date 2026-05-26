@@ -1,0 +1,17 @@
+Route10_PokemonCenter_1F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route10_PokemonCenter_1F_Frlg_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	.byte 0
+
+Route10_PokemonCenter_1F_Frlg_OnTransition:
+	setrespawn HEAL_LOCATION_ROUTE10
+	setworldmapflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	end
+
+Route10_PokemonCenter_1F_Frlg_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_ROUTE10_NURSE
+	call Common_EventScript_PkmnCenterNurse
+	waitmessage
+	waitbuttonpress
+	release
+	end

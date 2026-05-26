@@ -665,7 +665,7 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
+#define FLAG_EXP_SHARE_FLAG 0x265 // Exp. Share Flag
 #define FLAG_UNUSED_0x266  0x266 // Unused Flag
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
@@ -2382,26 +2382,26 @@
 #define FLAG_SYS_UNLOCKED_TANOBY_RUINS                              0
 
 // World Map Flags
-#define FLAG_WORLD_MAP_PALLET_TOWN                                  0
-#define FLAG_WORLD_MAP_VIRIDIAN_CITY                                0
-#define FLAG_WORLD_MAP_PEWTER_CITY                                  0
-#define FLAG_WORLD_MAP_CERULEAN_CITY                                0
-#define FLAG_WORLD_MAP_LAVENDER_TOWN                                0
-#define FLAG_WORLD_MAP_VERMILION_CITY                               0
-#define FLAG_WORLD_MAP_CELADON_CITY                                 0
-#define FLAG_WORLD_MAP_FUCHSIA_CITY                                 0
-#define FLAG_WORLD_MAP_CINNABAR_ISLAND                              0
-#define FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR                      0
-#define FLAG_WORLD_MAP_SAFFRON_CITY                                 0
-#define FLAG_WORLD_MAP_ONE_ISLAND                                   0
-#define FLAG_WORLD_MAP_TWO_ISLAND                                   0
-#define FLAG_WORLD_MAP_THREE_ISLAND                                 0
-#define FLAG_WORLD_MAP_FOUR_ISLAND                                  0
-#define FLAG_WORLD_MAP_FIVE_ISLAND                                  0
-#define FLAG_WORLD_MAP_SEVEN_ISLAND                                 0
-#define FLAG_WORLD_MAP_SIX_ISLAND                                   0
-#define FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F                     0
-#define FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F                    0
+#define FLAG_WORLD_MAP_PALLET_TOWN                                    (SYSTEM_FLAGS + 0x85)
+#define FLAG_WORLD_MAP_VIRIDIAN_CITY                                (SYSTEM_FLAGS + 0x21)
+#define FLAG_WORLD_MAP_PEWTER_CITY                                    (SYSTEM_FLAGS + 0x86)
+#define FLAG_WORLD_MAP_CERULEAN_CITY                                  (SYSTEM_FLAGS + 0x87)
+#define FLAG_WORLD_MAP_LAVENDER_TOWN                                  (SYSTEM_FLAGS + 0x88)
+#define FLAG_WORLD_MAP_VERMILION_CITY                                 (SYSTEM_FLAGS + 0x89)
+#define FLAG_WORLD_MAP_CELADON_CITY                                   (SYSTEM_FLAGS + 0x8A)
+#define FLAG_WORLD_MAP_FUCHSIA_CITY                                   (SYSTEM_FLAGS + 0x8B)
+#define FLAG_WORLD_MAP_CINNABAR_ISLAND                                (SYSTEM_FLAGS + 0x8C)
+#define FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR                        (SYSTEM_FLAGS + 0x8D)
+#define FLAG_WORLD_MAP_SAFFRON_CITY                                   (SYSTEM_FLAGS + 0x8E)
+#define FLAG_WORLD_MAP_ONE_ISLAND                                     (SYSTEM_FLAGS + 0x8F)
+#define FLAG_WORLD_MAP_TWO_ISLAND                                     (SYSTEM_FLAGS + 0x90)
+#define FLAG_WORLD_MAP_THREE_ISLAND                                   (SYSTEM_FLAGS + 0x91)
+#define FLAG_WORLD_MAP_FOUR_ISLAND                                    (SYSTEM_FLAGS + 0x92)
+#define FLAG_WORLD_MAP_FIVE_ISLAND                                    (SYSTEM_FLAGS + 0x93)
+#define FLAG_WORLD_MAP_SEVEN_ISLAND                                   (SYSTEM_FLAGS + 0x94)
+#define FLAG_WORLD_MAP_SIX_ISLAND                                     (SYSTEM_FLAGS + 0x95)
+#define FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F                       (SYSTEM_FLAGS + 0x96)
+#define FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F                      (SYSTEM_FLAGS + 0x97)
 #define FLAG_WORLD_MAP_VIRIDIAN_FOREST                              0
 #define FLAG_WORLD_MAP_MT_MOON_1F                                   0
 #define FLAG_WORLD_MAP_SSANNE_EXTERIOR                              0

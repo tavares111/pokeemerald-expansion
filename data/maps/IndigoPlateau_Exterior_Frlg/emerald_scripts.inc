@@ -1,0 +1,7 @@
+IndigoPlateau_Exterior_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, IndigoPlateau_Exterior_Frlg_OnTransition
+	.byte 0
+
+IndigoPlateau_Exterior_Frlg_OnTransition:
+	setworldmapflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
+	end

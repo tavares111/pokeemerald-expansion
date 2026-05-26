@@ -1,0 +1,16 @@
+FuchsiaCity_PokemonCenter_1F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, FuchsiaCity_PokemonCenter_1F_Frlg_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	.byte 0
+
+FuchsiaCity_PokemonCenter_1F_Frlg_OnTransition:
+	setrespawn HEAL_LOCATION_FUCHSIA_CITY
+	end
+
+FuchsiaCity_PokemonCenter_1F_Frlg_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_FUCHSIA_NURSE
+	call Common_EventScript_PkmnCenterNurse
+	waitmessage
+	waitbuttonpress
+	release
+	end

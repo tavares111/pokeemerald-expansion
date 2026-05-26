@@ -1,0 +1,7 @@
+CinnabarIsland_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, CinnabarIsland_Frlg_OnTransition
+	.byte 0
+
+CinnabarIsland_Frlg_OnTransition:
+	setworldmapflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	end

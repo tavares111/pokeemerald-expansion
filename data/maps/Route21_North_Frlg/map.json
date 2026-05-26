@@ -11,20 +11,25 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
-  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
       "map": "MAP_ROUTE21_SOUTH",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_PALLET_TOWN",
+      "offset": 0,
+      "direction": "up"
     }
   ],
+  "shared_scripts_map": "VictoryRoad_B1F",
   "object_events": [],
   "warp_events": [],
   "coord_events": [],
   "bg_events": [],
-  "region": "REGION_KANTO",
-  "shared_scripts_map": "VictoryRoad_B1F",
-  "include_in_emerald": true
+  "floor_number": 0,
+  "include_in_emerald": true,
+  "region": "REGION_KANTO"
 }

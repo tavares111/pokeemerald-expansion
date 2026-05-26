@@ -213,7 +213,28 @@ python3 tools/wild_encounters/wild_encounters_to_header.py
 
 If the encounter table compiles but no wild battles happen in-game, check the imported grass metatiles. The grass tiles must have a wild-grass metatile behavior, otherwise the map has encounter data but no tile behavior that triggers land encounters.
 
-## 8. Bulk-import all FRLG maps
+## 8. Add heal and Fly support later
+
+Raw imports intentionally avoid FRLG scripts, so Pokémon Centers and Fly destinations will not fully work until you add small Emerald-compatible scripts.
+
+Heal locations and Fly locations are related, but they are not the same system:
+
+- A heal location controls where `setrespawn`, whiteout, and Fly should place the player.
+- A Fly location also needs a world-map flag so the region map marks the city as visited and selectable.
+
+For a Pokémon Center, add your own nurse object and a minimal script that calls `setrespawn HEAL_LOCATION_*`. For a Fly destination, add a minimal outdoor map transition script that calls `setworldmapflag FLAG_WORLD_MAP_*`.
+
+See `docs/tutorials/how_to_add_heal_and_fly_locations_for_imported_frlg_maps.md` for a full Viridian City example.
+
+## 9. Add marts later
+
+Raw imports also remove Mart clerks. To restore shopping without importing FRLG story events, add one clerk object and a small Emerald-only script that uses `pokemart` with the original FRLG item list.
+
+Do not include the full original FRLG Mart script if it contains story logic. For example, `ViridianCity_Mart_Frlg` has Oak's Parcel logic in its original script; for a raw Emerald import, use a simple clerk script that sells items immediately.
+
+See `docs/tutorials/how_to_add_marts_for_imported_frlg_maps.md` for the minimal Mart pattern.
+
+## 10. Bulk-import all FRLG maps
 
 For importing every FRLG map at once, use the same rules as the single-map steps, but apply them mechanically:
 
@@ -236,7 +257,7 @@ python3 tools/wild_encounters/wild_encounters_to_header.py
 
 Then run a full build.
 
-## 9. Build
+## 11. Build
 
 From WSL:
 

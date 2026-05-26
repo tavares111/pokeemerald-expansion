@@ -1,0 +1,16 @@
+PewterCity_PokemonCenter_1F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, PewterCity_PokemonCenter_1F_Frlg_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	.byte 0
+
+PewterCity_PokemonCenter_1F_Frlg_OnTransition:
+	setrespawn HEAL_LOCATION_PEWTER_CITY
+	end
+
+PewterCity_PokemonCenter_1F_Frlg_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_PEWTER_NURSE
+	call Common_EventScript_PkmnCenterNurse
+	waitmessage
+	waitbuttonpress
+	release
+	end

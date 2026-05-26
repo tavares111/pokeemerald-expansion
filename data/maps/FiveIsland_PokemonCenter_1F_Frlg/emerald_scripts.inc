@@ -1,0 +1,16 @@
+FiveIsland_PokemonCenter_1F_Frlg_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, FiveIsland_PokemonCenter_1F_Frlg_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, CableClub_OnResume
+	.byte 0
+
+FiveIsland_PokemonCenter_1F_Frlg_OnTransition:
+	setrespawn HEAL_LOCATION_FIVE_ISLAND
+	end
+
+FiveIsland_PokemonCenter_1F_Frlg_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_FIVE_ISLAND_NURSE
+	call Common_EventScript_PkmnCenterNurse
+	waitmessage
+	waitbuttonpress
+	release
+	end

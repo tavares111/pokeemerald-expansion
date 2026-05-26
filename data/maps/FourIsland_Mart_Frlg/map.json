@@ -15,7 +15,23 @@
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_FOURISLAND_MART_CLERK",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "x": 2,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "FourIsland_Mart_Frlg_EventScript_Clerk",
+      "flag": "0"
+    }
+  ],
   "warp_events": [
     {
       "x": 4,
@@ -27,6 +43,5 @@
   ],
   "coord_events": [],
   "bg_events": [],
-  "shared_scripts_map": "VictoryRoad_B1F",
   "include_in_emerald": true
 }
