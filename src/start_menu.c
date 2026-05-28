@@ -48,6 +48,7 @@
 #include "dexnav.h"
 #include "wild_encounter.h"
 #include "constants/battle_frontier.h"
+#include "constants/flags.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 

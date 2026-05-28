@@ -269,12 +269,29 @@ LittlerootTown_ProfessorBirchsLab_Movement_PlayerEnterLabForJohtoStarter:
 LittlerootTown_ProfessorBirchsLab_EventScript_Aide::
 	lock
 	faceplayer
+	goto_if_unset FLAG_SYS_POKEDEX_GET, LittlerootTown_ProfessorBirchsLab_EventScript_AideNoPokedex
+	goto_if_unset DN_FLAG_DEXNAV_GET, LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveDexNav
+	goto_if_unset DN_FLAG_DETECTOR_MODE, LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveDexNav
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_AideAfterDexNav
+
+LittlerootTown_ProfessorBirchsLab_EventScript_AideNoPokedex::
 	goto_if_ge VAR_BIRCH_LAB_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter
 	goto_if_set FLAG_BIRCH_AIDE_MET, LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork, MSGBOX_DEFAULT
 	setflag FLAG_BIRCH_AIDE_MET
 	release
 	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_AideGiveDexNav::
+	setflag DN_FLAG_DEXNAV_GET
+	setflag DN_FLAG_DETECTOR_MODE
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_AideAddedDexNav, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_AideAfterDexNav::
+	goto_if_ge VAR_BIRCH_LAB_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AideReceivedStarter
+	goto LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet
 
 LittlerootTown_ProfessorBirchsLab_EventScript_AideAlreadyMet::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork, MSGBOX_DEFAULT
@@ -680,6 +697,12 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 	.string "and distribution of POKéMON.\p"
 	.string "The PROF enjoys {RIVAL}'s help, too.\n"
 	.string "There's a lot of love there.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_AideAddedDexNav:
+	.string "Oh, {PLAYER}{KUN}, your POKéDEX\n"
+	.string "can use our DEXNAV system now.\p"
+	.string "I've enabled it for you.\n"
+	.string "Try it from the START menu!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "PROF. BIRCH: So, {PLAYER}{KUN}.\p"
