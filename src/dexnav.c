@@ -2449,6 +2449,11 @@ static void Task_DexNavMain(u8 taskId)
 
         if (species != SPECIES_NONE)
         {
+            u16 prevSpecies = VarGet(DN_VAR_SPECIES) & DEXNAV_MASK_SPECIES;
+
+            if (prevSpecies != SPECIES_NONE && prevSpecies != species)
+                gSaveBlock3Ptr->dexNavChain = 0;
+
             PrintSearchableSpecies(species);
             //PlaySE(SE_DEX_SEARCH);
             PlayCry_Script(species, 0);
@@ -2676,7 +2681,9 @@ void TryIncrementSpeciesSearchLevel()
 
 void ResetDexNavSearch(void)
 {
-    gSaveBlock3Ptr->dexNavChain = 0;    //reset dex nav chaining on new map
+#if DEXNAV_PERSIST_CHAIN_ON_WARP == FALSE
+    gSaveBlock3Ptr->dexNavChain = 0;
+#endif
     VarSet(DN_VAR_STEP_COUNTER, 0); //reset hidden pokemon step counter
     if (FlagGet(DN_FLAG_SEARCHING))
         EndDexNavSearch();   //moving to new map ends dexnav search

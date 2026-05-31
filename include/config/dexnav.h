@@ -18,6 +18,7 @@
 #define MAX_PROXIMITY                   20
 
 #define DEXNAV_CHAIN_MAX                100 // maximum chain value
+#define DEXNAV_PERSIST_CHAIN_ON_WARP    TRUE // If TRUE, chain survives map warps (e.g. heal trips). If FALSE, ORAS-like reset on every warp.
 
 // hidden pokemon options - an approximation of values due to lack of available data
 #define HIDDEN_MON_STEP_COUNT       100  // Look for hidden pokemon every x steps

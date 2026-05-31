@@ -62,7 +62,21 @@ u8 dexNavSearchLevels[NUM_SPECIES];
 
 This is required for hidden ability odds to increase above search level 0. It also changes save compatibility and may require updating the expected `SaveBlock3` size in [`test/save.c`](../../test/save.c). Make sure `sizeof(struct SaveBlock3)` still fits within the `SaveBlock3` save space.
 
-DexNav increments the searched species level after a DexNav battle ends in a win or capture. The chain also increases on win or capture and resets when the player loses, runs, changes map, or otherwise breaks the search.
+DexNav increments the searched species level after a DexNav battle ends in a win or capture. The chain also increases on win or capture.
+
+Chain persistence is controlled by:
+
+```c
+#define DEXNAV_PERSIST_CHAIN_ON_WARP TRUE
+```
+
+When `DEXNAV_PERSIST_CHAIN_ON_WARP` is `TRUE` (default in this project):
+
+- The chain **survives map warps** (routes, towns, Pokémon Centers, etc.).
+- An **active search still ends** on warp; press Start and search again after returning.
+- The chain **resets** when the player runs or loses a DexNav battle, flees during search (moved too fast, timeout, lost signal), or **registers a different species** with R in the DexNav UI.
+
+When `DEXNAV_PERSIST_CHAIN_ON_WARP` is `FALSE`, the chain resets on every map warp (closer to ORAS behavior).
 
 ## Hidden Abilities
 
