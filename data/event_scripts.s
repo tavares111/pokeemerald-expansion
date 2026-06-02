@@ -141,6 +141,7 @@ gStdScripts_End::
 	.include "data/maps/EverGrandeCity/scripts.inc"
 	.include "data/maps/LittlerootTown/scripts.inc"
 	.include "data/maps/OldaleTown/scripts.inc"
+	.include "data/scripts/hoenn_kanto_travel.inc"
 	.include "data/maps/DewfordTown/scripts.inc"
 	.include "data/maps/LavaridgeTown/scripts.inc"
 	.include "data/maps/FallarborTown/scripts.inc"
@@ -1045,6 +1046,15 @@ gStdScripts_End::
 .endif
 
 .if !IS_FRLG && EM_INCLUDE_RAW_KANTO_FRLG
+@ Shared FRLG scripts required by raw Kanto maps in Emerald
+	.include "data/scripts/item_ball_scripts_frlg.inc"
+	.include "data/scripts/pkmn_center_nurse_frlg.inc"
+	.include "data/scripts/seagallop.inc"
+
+@ Full map scripts with NPCs not covered by emerald_scripts stubs
+	.include "data/maps/TwoIsland_Frlg/scripts.inc"
+	.include "data/maps/OneIsland_PokemonCenter_1F_Frlg/scripts.inc"
+
 	.include "data/maps/ViridianCity_Frlg/emerald_scripts.inc"
 	.include "data/maps/PalletTown_Frlg/emerald_scripts.inc"
 	.include "data/maps/PewterCity_Frlg/emerald_scripts.inc"
@@ -1057,7 +1067,6 @@ gStdScripts_End::
 	.include "data/maps/IndigoPlateau_Exterior_Frlg/emerald_scripts.inc"
 	.include "data/maps/SaffronCity_Frlg/emerald_scripts.inc"
 	.include "data/maps/OneIsland_Frlg/emerald_scripts.inc"
-	.include "data/maps/TwoIsland_Frlg/emerald_scripts.inc"
 	.include "data/maps/ThreeIsland_Frlg/emerald_scripts.inc"
 	.include "data/maps/FourIsland_Frlg/emerald_scripts.inc"
 	.include "data/maps/FiveIsland_Frlg/emerald_scripts.inc"
@@ -1075,7 +1084,6 @@ gStdScripts_End::
 	.include "data/maps/CinnabarIsland_PokemonCenter_1F_Frlg/emerald_scripts.inc"
 	.include "data/maps/IndigoPlateau_PokemonCenter_1F_Frlg/emerald_scripts.inc"
 	.include "data/maps/SaffronCity_PokemonCenter_1F_Frlg/emerald_scripts.inc"
-	.include "data/maps/OneIsland_PokemonCenter_1F_Frlg/emerald_scripts.inc"
 	.include "data/maps/TwoIsland_PokemonCenter_1F_Frlg/emerald_scripts.inc"
 	.include "data/maps/ThreeIsland_PokemonCenter_1F_Frlg/emerald_scripts.inc"
 	.include "data/maps/FourIsland_PokemonCenter_1F_Frlg/emerald_scripts.inc"

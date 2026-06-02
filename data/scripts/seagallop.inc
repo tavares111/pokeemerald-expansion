@@ -1,3 +1,7 @@
+.if !IS_FRLG
+.set LOCALID_VERMILION_FERRY_SAILOR, LOCALID_NONE
+.endif
+
 @ Separate selection menus for before the Rainbow Pass is obtained
 EventScript_ChooseDestFromOneIsland::
 	goto_if_ge VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 5, EventScript_SeviiDestinationsPage1
@@ -197,3 +201,10 @@ EventScript_SailToSevenIsland::
 Text_AllAboardSeagallopNum::
 	.string "All right!\n"
 	.string "All aboard SEAGALLOP HI-SPEED {STR_VAR_1}!$"
+
+.if !IS_FRLG
+VermilionCity_Text_Seagallop7Departing::
+	.string "Okay, everything's in order.\p"
+	.string "SEAGALLOP HI-SPEED 7 will be\n"
+	.string "departing immediately.$"
+.endif

@@ -1096,33 +1096,33 @@ static bool32 CheckCurrentWildMonHeaderForOWE(bool32 shouldSpawnWaterMons)
 
 static u32 GetOldestActiveOWESlot(bool32 forceRemove)
 {
-    struct ObjectEvent *slotMon, *oldest = &gObjectEvents[GetObjectEventIdByLocalId(LOCALID_OW_ENCOUNTER_END)];
+    struct ObjectEvent *slotMon;
+    struct ObjectEvent *oldest = NULL;
     u32 spawnSlot;
+    u32 oldestSlot = OWE_INVALID_SPAWN_SLOT;
 
     for (spawnSlot = 0; spawnSlot < OWE_SPAWNS_MAX; spawnSlot++)
     {
-        slotMon = &gObjectEvents[GetObjectEventIdByLocalId(GetLocalIdByOWESpawnSlot(spawnSlot))];
-        if (OW_SPECIES(slotMon) != SPECIES_NONE && (!HasOWENoDespawnFlag(slotMon) || forceRemove == TRUE))
+        u32 objEventId = GetObjectEventIdByLocalId(GetLocalIdByOWESpawnSlot(spawnSlot));
+
+        if (objEventId >= OBJECT_EVENTS_COUNT)
+            continue;
+
+        slotMon = &gObjectEvents[objEventId];
+        if (!IsOverworldWildEncounter(slotMon, OWE_GENERATED))
+            continue;
+
+        if (HasOWENoDespawnFlag(slotMon) && !forceRemove)
+            continue;
+
+        if (oldest == NULL || slotMon->sOverworldEncounterAge > oldest->sOverworldEncounterAge)
         {
             oldest = slotMon;
-            break;
+            oldestSlot = spawnSlot;
         }
     }
 
-    if (spawnSlot >= OWE_SPAWNS_MAX)
-        return OWE_INVALID_SPAWN_SLOT;
-
-    for (u32 i = spawnSlot; i < OWE_SPAWNS_MAX; i++)
-    {
-        slotMon = &gObjectEvents[GetObjectEventIdByLocalId(GetLocalIdByOWESpawnSlot(i))];
-        if (OW_SPECIES(slotMon) != SPECIES_NONE && (!HasOWENoDespawnFlag(slotMon) || forceRemove == TRUE))
-        {
-            if (slotMon->sOverworldEncounterAge > oldest->sOverworldEncounterAge)
-                oldest = slotMon;
-        }
-    }
-
-    return GetSpawnSlotByOWELocalId(oldest->localId);
+    return oldestSlot;
 }
 
 static u32 GetNextOWESpawnSlot(void)
@@ -1145,18 +1145,23 @@ static u32 GetNextOWESpawnSlot(void)
             break;
     }
 
+    if (spawnSlot >= OWE_SPAWNS_MAX)
+        return OWE_INVALID_SPAWN_SLOT;
+
     return spawnSlot;
 }
 
 static u32 GetSpeciesByOWESpawnSlot(u32 spawnSlot)
 {
     u32 objEventId = GetObjectEventIdByLocalId(GetLocalIdByOWESpawnSlot(spawnSlot));
-    struct ObjectEvent *owe = &gObjectEvents[objEventId];
 
     if (objEventId >= OBJECT_EVENTS_COUNT)
         return SPECIES_NONE;
 
-    return OW_SPECIES(owe);
+    if (!IsOverworldWildEncounter(&gObjectEvents[objEventId], OWE_GENERATED))
+        return SPECIES_NONE;
+
+    return OW_SPECIES(&gObjectEvents[objEventId]);
 }
 
 static bool32 TrySelectTileForOWE(s32* outX, s32* outY)

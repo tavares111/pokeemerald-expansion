@@ -95,13 +95,6 @@
       "elevation": 4,
       "dest_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_2F",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 2,
-      "y": 1,
-      "elevation": 0,
-      "dest_map": "MAP_PALLET_TOWN_PLAYERS_HOUSE_1F",
-      "dest_warp_id": "4"
     }
   ],
   "coord_events": [],

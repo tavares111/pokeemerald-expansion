@@ -92,3 +92,8 @@ Text_RestoredPkmnToFullHealth_Frlg::
 	.string "Thank you for waiting.\n"
 	.string "We've restored your POKéMON to\l"
 	.string "full health.$"
+
+Text_PlayerIsPlayingRightNowGoForIt_Frlg::
+	.string "It appears as if {STR_VAR_1} is playing\n"
+	.string "right now.\l"
+	.string "Go for it!$"
